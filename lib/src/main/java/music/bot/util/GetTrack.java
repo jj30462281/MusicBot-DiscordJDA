@@ -43,7 +43,7 @@ public class GetTrack {
 	}
 	
 	static Boolean FileIsSupport(URI url) {
-		List<String> list = Arrays.asList(".mp3", "ogg", ".flac", ".wav", ".mkv", ".mp4", ".aac");
+		List<String> list = Arrays.asList(".mp3", ".ogg", ".flac", ".wav", ".mkv", ".mp4", ".aac");
 		String path = url.getPath();
 		for(String str : list) {
 			if(path.endsWith(str)) return true;
