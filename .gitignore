@@ -1,0 +1,13 @@
+hs_err_pid* 
+.mtj.tmp/ 
+.gradle
+build
+*.class 
+*.ctxt 
+*.jar 
+*.war 
+*.ear 
+SpotifyAPI.java
+gradle-app.setting 
+!gradle-wrapper.jar 
+.gradletasknamecache 
