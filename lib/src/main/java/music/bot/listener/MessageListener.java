@@ -15,6 +15,8 @@ public class MessageListener extends ListenerAdapter
     	Message message = event.getMessage();
     	Guild guild = event.getGuild();
     	String content = message.getContentDisplay();
+    	
+    	if(message.getAuthor().isBot()) return;
     	if(content.startsWith("mplay")) PlayCommand.execute(message);
     	
     	if(!MusicPlayerList.has(guild.getId())) return;

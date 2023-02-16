@@ -38,7 +38,7 @@ public class PlayCommand {
     	if(!guild.getAudioManager().isConnected()) {
     		guild.getAudioManager().openAudioConnection(voice_channel);
     		
-    		music_player = new MusicPlayer(message.getChannel().asTextChannel());
+    		music_player = new MusicPlayer(message.getChannel().asTextChannel(), message.getMember().getVoiceState().getChannel());
     		guild.getAudioManager().setSendingHandler(new AudioPlayerSendHandler(music_player.player));
     		MusicPlayerList.put(guild.getId(), music_player);
     	}

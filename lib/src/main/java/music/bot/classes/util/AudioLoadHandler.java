@@ -12,20 +12,22 @@ public class AudioLoadHandler implements AudioLoadResultHandler {
 	private TextChannel channel;
 	private MusicPlayer music_player;
 	private Boolean isSearch;
+	private Boolean isSpotify;
 	
-	public AudioLoadHandler(MusicPlayer music_player, TextChannel channel, Boolean isSearch) {
+	public AudioLoadHandler(MusicPlayer music_player, TextChannel channel, Boolean isSearch, Boolean isSpotify) {
 		this.music_player = music_player;
 		this.channel = channel;
 		this.isSearch = isSearch;
+		this.isSpotify = isSpotify;
 	}
 
 	@Override
 	public void trackLoaded(AudioTrack track) {
 		this.music_player.put_track(track);
 		
-		if(this.music_player.trackScheduler.queue.size() == 1) {
+		if(this.music_player.trackScheduler.queue.size() == 1 && this.music_player.player.getPlayingTrack() == null) {
 			this.music_player.play();
-		}else this.channel.sendMessage(track.getInfo().title + " 已加入到播放清單").queue();
+		}else if(!isSpotify) this.channel.sendMessage(track.getInfo().title + " 已加入到播放清單").queue();
 	}
 
 	@Override

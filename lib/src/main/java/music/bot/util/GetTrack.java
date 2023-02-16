@@ -19,7 +19,8 @@ public class GetTrack {
 			message.reply("目前尚不支持此類型的URL").queue();
 			return;
 		}
-		music_player.get(query);
+		if(IsSpotify(url)) music_player.spotify(query, message);
+		else music_player.get(query);
 	}
 	
 	static boolean isUrl(String str) {
@@ -33,7 +34,7 @@ public class GetTrack {
     }
 	
 	static Boolean HostIsSupport(URI url) {
-		List<String> list = Arrays.asList("youtube", "youtu.be", "soundcloud", "bandcamp", "vimeo", "twitch");
+		List<String> list = Arrays.asList("youtube", "youtu.be", "soundcloud", "bandcamp", "vimeo", "twitch", "spotify");
 		String host = url.getHost();
 		for(String str : list) {
 			if(host.matches(String.format("(.*)%s(.*)", str))) return true;
@@ -49,5 +50,10 @@ public class GetTrack {
 		}
 		
 		return false;
+	}
+	
+	static Boolean IsSpotify(URI url) {
+		String host = url.getHost();
+		return host.matches("(.*)spotify(.*)");
 	}
 }

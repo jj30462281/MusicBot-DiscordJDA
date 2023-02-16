@@ -6,8 +6,7 @@ build
 *.ctxt 
 *.jar 
 *.war 
-*.ear 
-SpotifyAPI.java
+*.ear
 gradle-app.setting 
 !gradle-wrapper.jar 
 .gradletasknamecache 
